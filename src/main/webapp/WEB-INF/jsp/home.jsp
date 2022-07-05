@@ -21,36 +21,14 @@
         <div class="header">
             <h1>Please enter your first name, city, and state to check in.</h1>
         </div>
+        <form action="/persons" method="post">
+            <div class=""form-group>
+                <hr>
+                <table class = "table">
 
-        <div class="modal fade" id="personRepModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>Home Check-in</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="${"/persons"}}" id="personForm">
-                            <div class="form-group">
-                                <label for="personForm">People/City/State</label>
-                                <hr>
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>First Name</th>
-                                        <th>City</th>
-                                        <th>State</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="personTable">
-                                        <c:forEach items="${}"
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                </table>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 
