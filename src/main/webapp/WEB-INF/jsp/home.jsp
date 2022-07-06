@@ -7,7 +7,7 @@
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../../resources/static/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/static/css/style.css">
     <title>HomeUILayer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
         <div class="header">
             <h1>Please enter your first name, city, and state to check in.</h1>
         </div>
-        <form action="/persons" method="post">
+        <form action="/persons" method="POST" id="personsForm">
             <div class="form-group">
                 <hr>
                 <table class = "table">
@@ -34,18 +34,27 @@
                     </thead>
                     <tbody>
                     <!--We need this to read our values from the service class -->
-                        <c:forEach items="${Person.newPerson()}" var="persons">
-                            <tr>
+
+                            <tr class="newPersonsRow" >
                                 <td><input type="text" class="form-control" id="firstName" name="persons.getFirstName()"></td>
                                 <td><input type="text" class="form-control" id="City" name="persons.getCity()"></td>
                                 <td><input type="text" class="form-control" id="State" name="persons.getState()"></td>
                             </tr>
-                        </c:forEach>
+
+                            <tr id="newRow">
+                                <td><input type="text" class="form-control" id="newPersonFirstName" name="persons.getFirstName()"></td>
+                                <td><input type="text" class="form-control" id="newPersonCity" name="persons.getCity()"></td>
+                                <td><input type="text" class="form-control" id="newPersonState" name="persons.getState()"></td>
+                            </tr>
                     </tbody>
                 </table>
+                <button id="addMore">Add More!</button>
             </div>
         </form>
     </div>
+<script src="/javascript/javascript.js">
+
+</script>
 </body>
 
 </html>
