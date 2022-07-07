@@ -8,7 +8,7 @@
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>HomeUILayer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
