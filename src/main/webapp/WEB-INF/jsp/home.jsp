@@ -8,7 +8,7 @@
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../../resources/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/style.css">
     <title>HomeUILayer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,15 +64,15 @@
                     <form method="post" action="${Urls.ADD_NEW_PERSON}" id="personForm">
                         <div class="form-group">
                             <label for="personFirstName"> First Name: </label>
-                            <input type="text" class="form-control" id="personFirstName" name="personFirstName" >
+                            <input type="text" class="form-control" id="personFirstName" name="personFirstName" value="${firstName}">
                         </div>
                         <div class="form-group">
                             <label for="personCity"> City: </label>
-                            <input type="text" class="form-control" id="personCity" name="personCity">
+                            <input type="text" class="form-control" id="personCity" name="personCity" value="${city}">
                         </div>
                         <div class="form-group">
                             <label for="personCity"> State: </label>
-                            <input type="text" class="form-control" id="personState" name="personState">
+                            <input type="text" class="form-control" id="personState" name="personState" value="${state}">
                         </div>
                     </form>
                     <button id="addMore">Add</button>
@@ -89,13 +89,18 @@
     $("#personForm").submit(function (event) {
         event.preventDefault();
         var post_url = $(this).attr("action");
+        var unindexed_array = $(this).serializeArray();
+        var indexed_array = {};
 
+        $.map(unindexed_array, function(n, i){
+            indexed_array[n['name']] = n['value'];
+        });
 
         $.ajax({
-            url: post_url, contentType: 'application/json', dataType: 'json', data: JSON.stringify(entries),
+            url: post_url, contentType: 'application/json', dataType: 'json', data: JSON.stringify(indexed_array),
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                window.location.assign("https://localhost:8081");
+                window.location.assign("https://localhost:8081/persons/");
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("received by ajax: " + JSON.stringify(errorThrown));
