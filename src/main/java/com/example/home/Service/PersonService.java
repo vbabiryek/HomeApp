@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -52,5 +53,20 @@ public class PersonService {
 
     public void deletePerson(Long id){
         personRepository.deleteById(id);
+    }
+
+    public String getPersonEntry(Long id){
+        Optional<Person> personEntry = personRepository.findById(id);
+        Person person = new Person();
+        if(personEntry.isPresent()){
+            Person result = personEntry.get();
+            person.setFirstName(result.getFirstName());
+            person.setCity(result.getCity());
+            person.setState(result.getState());
+            return person.toString();
+        }
+        else{
+            return null;
+        }
     }
 }
